@@ -2,5 +2,5 @@
 
 docker build \
     --platform linux/amd64 \
-    -t dannicool/wechatbot-provider-windows .
+    -t wanxp/wechatbot-watch-requests .
 

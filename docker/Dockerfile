@@ -10,12 +10,12 @@ RUN dnf update -y \
         && dnf install -y git \
         && dnf clean all
 
-COPY ./docker/res ./res
+COPY ./res ./res
 
 RUN echo "root:123" | chpasswd \
         && mkdir ~/Desktop \
         && mv res/*.desktop ~/Desktop \
-        && mv res/*.sh . 
+        && mv res/*.sh .
         # && unzip -o res/v*.zip -d res
 
 # Port for xRDP
@@ -26,6 +26,10 @@ EXPOSE 3389
 EXPOSE 10086
 # Port for rpc recv msg
 EXPOSE 10087
+# Port for minmproxy proxy listen
+EXPOSE 18181
+# Port for minmproxy web listen
+EXPOSE 18182
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["bash"]

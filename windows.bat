@@ -17,7 +17,8 @@ if exist requirements.txt (
 ) else (
     echo requirements.txt not found.
 )
-
+echo Starting proxy...
+start minmpweb --set web_port=18182 listen_port=18181 web_host=0.0.0.0 listen_host=0.0.0.0
 echo Starting program...
 python main.py
 

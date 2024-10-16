@@ -1,6 +1,6 @@
-# wechatbot-provider-windows
-这是一个可以使用 docker 部署的 pc 版微信，对外暴露了 rpc 调用的钩子，适配 wechatFerry 的rpc调用
-
+# wechatbot-watch-requests
+1. 这是一个可以使用 docker 部署的 pc 版微信，对外暴露了 rpc 调用的钩子，适配 wechatFerry 的rpc调用
+2. 通过mitmproxy代理监控https、http请求，实现获取微信小程序、公众号等http、https的请求数据
 
 # 免责声明
 
@@ -31,7 +31,7 @@
 
 ```bash
 
-docker pull dannicool/wechatbot-provider-windows
+docker pull wanxp/wechatbot-watch-requests
 ```
 
 ## 2. 准备资源
@@ -46,6 +46,8 @@ docker run -itd \
     -p 13389:3389 \
     -p 10086:10086 \
     -p 10087:10087 \
+    -p 18181:18181 \
+    -p 18182:18182 \
     -v install:/root/res/install \
     --ulimit nofile=8192 \
     --name DESKTOP \
@@ -54,6 +56,9 @@ docker run -itd \
 
 - rpc推消息端口是 10086
 - rpc收消息端口是 10087
+- rdp 连接端口是 13389
+- minmproxy 代理端口是 18181
+- minmproxy web端口是 18182
 
 ## 4. 使用 rdp 连接
 
@@ -84,7 +89,8 @@ docker run -itd \
 
 # 鸣谢
 
-本项目只是对以下两个项目的整合，并保证最新的服务可用，最终的贡献是属于以下两位大佬的项目
+本项目只是对以下三个项目的整合，并保证最新的服务可用，最终的贡献是属于以下两位大佬的项目
 
 - [wechat_box](https://github.com/Saroth/docker_wechat)
 - [WeChatFerry](https://github.com/lich0821/WeChatFerry)
+- [wechatbot-provider-windows](https://github.com/danni-cool/wechatbot-provider-windows)
